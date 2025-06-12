@@ -1,8 +1,8 @@
 [package]
 name = "serdapt"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Stephane Raux <stephaneyfx@gmail.com>"]
-edition = "2021"
+edition = "2024"
 description = "Composable adapters for `#[serde(with = ...)]` attribute"
 license = "0BSD"
 homepage = "https://github.com/stephaneyfx/serdapt"
