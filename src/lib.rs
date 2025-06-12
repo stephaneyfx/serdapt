@@ -214,6 +214,7 @@ mod codec;
 mod convert;
 #[cfg(feature = "alloc")]
 mod cow;
+mod fold;
 mod from;
 mod human;
 mod identity;
@@ -246,6 +247,7 @@ pub use codec::Codec;
 pub use convert::{Convert, RefConvert, RefTryConvert, TryConvert};
 #[cfg(feature = "alloc")]
 pub use cow::Cow;
+pub use fold::Fold;
 pub use from::From;
 pub use human::HumanOr;
 pub use identity::Id;
