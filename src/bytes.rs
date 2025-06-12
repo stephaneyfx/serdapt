@@ -3,11 +3,8 @@
 use crate::{DeserializeWith, SerializeWith};
 #[cfg(feature = "alloc")]
 use alloc::{borrow::Cow, boxed::Box, rc::Rc, string::String, vec::Vec};
-use core::{
-    fmt::{self, Display},
-    marker::PhantomData,
-};
-use serde::{de::Visitor, Deserializer, Serializer};
+use core::{fmt, marker::PhantomData};
+use serde::{Deserializer, Serializer, de::Visitor};
 
 /// Adapter for contiguous byte sequences
 ///
@@ -364,6 +361,7 @@ impl<'de: 'a, 'a> Visitor<'de> for CowVisitor<'a> {
 #[cfg(feature = "alloc")]
 pub struct ByteVec;
 
+#[cfg(feature = "alloc")]
 impl ByteVec {
     /// Serializes value as bytes
     pub fn serialize<T, S>(value: &T, serializer: S) -> Result<S::Ok, S::Error>
@@ -399,7 +397,7 @@ where
 impl<'de, T> DeserializeWith<'de, T> for ByteVec
 where
     T: TryFrom<Vec<u8>>,
-    T::Error: Display,
+    T::Error: core::fmt::Display,
 {
     fn deserialize_with<D>(deserializer: D) -> Result<T, D::Error>
     where

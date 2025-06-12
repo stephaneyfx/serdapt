@@ -1,8 +1,8 @@
 use crate::{DeserializeWith, Id, WithEncoding};
 use core::{fmt, marker::PhantomData, ops::Add};
 use serde::{
-    de::{SeqAccess, Visitor},
     Deserializer,
+    de::{SeqAccess, Visitor},
 };
 
 /// Sequence adapter to fold over its items when deserializing
@@ -14,7 +14,7 @@ use serde::{
 ///
 /// # Example
 /// ```
-/// # #[cfg(feature = "std")]
+/// # #[cfg(feature = "std")] {
 /// use serde::Deserialize;
 /// use serde_json::json;
 ///
@@ -23,6 +23,7 @@ use serde::{
 ///
 /// let Foo(sum) = serde_json::from_value::<Foo>(json!([1, 2, 3])).unwrap();
 /// assert_eq!(sum, 1 + 2 + 3);
+/// # }
 /// ```
 pub struct Fold<T, A, F = Id> {
     _convert: PhantomData<fn(T)>,
